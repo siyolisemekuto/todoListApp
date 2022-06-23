@@ -1,0 +1,43 @@
+:root{
+    --color1:#C29C5E;
+    --color2:#9D964A;
+    --color3:#738F42;
+    --color4:#408745;
+    --color5:#007D51;
+    --color6:#007262;
+}
+
+/* toggle */
+.check:checked + span.checkItem{
+    text-decoration: line-through;
+}
+span:hover{
+    opacity: 0.3;
+}
+.container-fluid{
+    background-color: var(--color1);
+    height: 100vh;
+    width:100vw;
+    font-family: serif;
+}
+#item-wrapper{
+    font-size:large;
+    text-decoration: none;
+    position: fixed;
+    top: 20%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+.btn{
+    background-color: var(--color3);
+    width:8em;
+}
+#task.form-control{
+    width:15em;
+}
+form.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}

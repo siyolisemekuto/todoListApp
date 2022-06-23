@@ -1,44 +1,65 @@
 //Boolean to check local storage
-let items = JSON.parse(localStorage.getItem('items'))
-? 
-//functions to generate array values
-function Mathfloor(){
-    const now = new Date()
+// localStorage.removeItem('records');
+let items = JSON.parse(localStorage.getItem('records'))
+? JSON.parse(localStorage.getItem('records')):[
+    {
+        id: 1,
+        item: 'TV Stand',
+        createdDate: new Date()
+        
+    }
+];
+     
+//function to show items
+function showItems(){
+    // itemContainer.innerHTML = "" 
+
+//looping (will keep reshowing items)
+    items.forEach(item => {
+        document.querySelector('#item-wrapper').innerHTML +=`
+    <li class=item>
+        <input type='checkbox' class='check'>
+        <span class='checkItem'>${item.item} </span>
+        <span>
+    </li> `
+    });
+    // console.table(items);
 }
-// if (priority = "important and urgent"){
-//     console.log("important and urgent");
-// } else if (priority = "important but not urgent"){
-//     console.log("important but not urgent")
-// }
-//add newItem function (CREATE)
-let newItems = items
+//check-box
+function crossedOut(item) {
+    if (document.querySelector('#item-wrapper').checked===true) { 
+        document.querySelector('#item-wrapper').classList.add('checked');
+    } else {
+        document.querySElector('#item-wrapper').classList.remove('checked');
+    }
+}
+//delete function
+function deleteRecord(id) {
+    if(id > -1){
+        lists.splice( id, 1);
+        // After delete
+        localStorage.setItem('records', JSON.stringify(lists) );
+    }else {
+        console.log('Name was not found');
+    }
+}
+
 function addItem(){
+    // console.log('Hello There');
+    // e.preventDefault();
     const newItem = {
-        id: items.lenth+1,
-        item: document.querySelector('#item').value,
-        dateCreated: now,
-        priority: document.querySelector('#priority').value,
-        completed: document.querySelector('#completed').value
+        id: items.length + 1,
+        item: document.querySelector('#task').value,
+        dateCreated: new Date()
+    
     };
+    // console.log(newItem.id);
     console.log(newItem);
     items.push(newItem);
-    showItems(items)
+    localStorage.setItem('records', JSON.stringify(items));
+    
 }
+showItems(); 
 
-//display on html
-const itemContainer = document.querySelector('#todoItems') 
-         
-//function to show items
-function showItems(items){
-    itemContainer.innerHTML = "" 
-
-    //looping (will keep reshowing items)
-    items.forEach(item => {
-    itemContainer.innerHTML +=`
-    <div class=item>
-         <img src=${item.image}>,
-         <h5>${item.description}</h5>,
-         <h6>${item.price}<h6>
-    </div> `
-    })
-}
+// Event listener
+document.querySelector('#addRecord').addEventListener('click', addItem);
