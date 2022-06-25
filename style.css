@@ -41,3 +41,21 @@ form.row{
     justify-content: center;
     padding-top: 20px;
 }
+#delete{
+    display: non;
+}
+span#delete:hover{
+    display: inline;
+}
+/* #sorting.im_ur{
+    color: red;
+}
+#sorting.im_n_ur{
+    color: green;
+}
+#sorting.n_im_ur{
+    color: orange;
+}
+#sorting.n_im_n_ur{
+    color: blue;
+} */
